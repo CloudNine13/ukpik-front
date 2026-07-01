@@ -3,8 +3,8 @@ type CustomVideoProps = {
 };
 
 function CustomVideo({ video }: CustomVideoProps) {
-  const videoStyle = 'absolute top-0 left-0 w-full h-full object-cover';
-  
+  const videoStyle = 'absolute top-0 left-0 w-full h-full object-cover z-0';
+
   return (
     <video autoPlay loop muted playsInline className={videoStyle}>
       <source src={video} type="video/mp4" />
