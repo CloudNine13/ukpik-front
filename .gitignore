@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# start TODO: delete in prod
+src/assets
+public
+# end TODO
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
