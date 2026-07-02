@@ -1,17 +1,41 @@
-import { TopBar } from '../../components';
+import { TopBar, Section } from '@components';
 import { Hero } from '../Hero';
 import { SectionLayout } from '../SectionLayout';
 import { SmoothScrollLayout } from '../SmoothScrollLayout';
+import video from '@assets/video.mp4';
+import video2 from '@assets/video2.mp4';
+import video3 from '@assets/video3.mp4';
 
 function MainView() {
   const mainStyle = 'flex flex-col relative text-red';
   const sectionsStyle = 'flex flex-col';
+  const heroStyle = 'sticky top-0 z-0 snap-section h-[100vh]';
 
   const sectionsData = [
-    { name: 'Introduction', component: <Hero className="relative" /> },
-    { name: 'Features', component: <Hero className="relative" /> },
-    { name: 'Analytics', component: <Hero className="relative" /> },
-    { name: 'Conclusion', component: <Hero className="relative" /> },
+    {
+      name: 'Introduction',
+      innerName: 'TESTING',
+      description: 'First description',
+      component: <Section video={video2} />,
+    },
+    {
+      name: 'Features',
+      innerName: 'ANOTHER TEST',
+      description: 'This is a description',
+      component: <Section video={video3} />,
+    },
+    {
+      name: 'Analytics',
+      innerName: 'ONE MORE TEST',
+      description: 'This is another description',
+      component: <Section video={video} />,
+    },
+    {
+      name: 'Conclusion',
+      innerName: 'LAST TEST',
+      description: 'This is the last description',
+      component: <Section video={video2} />,
+    },
   ];
 
   const bgClasses = ['bg-red', 'bg-black'];
@@ -22,7 +46,7 @@ function MainView() {
       <main className={mainStyle}>
         <TopBar />
         <div className={sectionsStyle}>
-          <Hero className="sticky top-0 z-0 snap-section" />
+          <Hero className={heroStyle} />
           {sectionsData.map((section, index) => {
             const assignedBg = bgClasses[index % bgClasses.length];
             const assignedText = textClasses[index % textClasses.length];
