@@ -1,10 +1,11 @@
 interface HoverTextProps {
   children: string;
   className?: string;
-  onClick?: () => void;
+  href?: string;
+  target?: string;
 }
 
-function HoverText({ children, className, onClick }: HoverTextProps) {
+function HoverText({ children, className, href, target }: HoverTextProps) {
   const characters = children.split('');
 
   const containerStyle = 'group relative inline-flex flex-col cursor-pointer pb-1';
@@ -17,7 +18,12 @@ function HoverText({ children, className, onClick }: HoverTextProps) {
     'absolute bottom-0 left-0 w-full h-[2px] bg-current origin-left scale-x-0 group-hover:scale-x-100';
 
   return (
-    <span className={`${containerStyle} ${className || ''}`} onClick={onClick}>
+    <a
+      className={`${containerStyle} ${className || ''}`}
+      href={href}
+      target={target}
+      rel="noopener noreferrer"
+    >
       <span className="sr-only">{children}</span>
       <span className="flex overflow-hidden pb-1" aria-hidden="true">
         {characters.map((char, index) => {
@@ -42,7 +48,7 @@ function HoverText({ children, className, onClick }: HoverTextProps) {
         })}
       </span>
       <span className={`${underlineStyle} ${transitionStyle}`} />
-    </span>
+    </a>
   );
 }
 
